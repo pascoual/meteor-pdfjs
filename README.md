@@ -3,6 +3,9 @@
 PDF rendering for your Meteor application (client only).
 This package use the Mozilla's PDF reader built with HTML5 and JavaScript
 
+If you need server side PDF rendering, please use pdf.js Meteor package from Mitar:
+https://github.com/peerlibrary/meteor-pdf.js
+
 ## Quick Start
 1. `npm install -g meteorite` (if not already installed)
 2. `mrt add pdfjs`
@@ -29,8 +32,9 @@ PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
 ```
 
 ## Documentation
-You can find informations about pdf.js node package here:
+You can find informations about pdf.js lib:
 * pdf.js web site: http://mozilla.github.io/pdf.js/
+* pdf.js API: https://github.com/mozilla/pdf.js/blob/master/src/display/api.js
 
 ## Contributing
 Contributors are very welcome. There are many things you can help with,
@@ -51,7 +55,8 @@ Some guidelines below:
 * **Answer Questions!**: If you can help another user please do!
 
 ## TODO
-1. Explain how to make a viewer with selectable text.
+1. Explain how to make a viewer with selectable text
+2. Add testing
 
 ## License
 MIT
