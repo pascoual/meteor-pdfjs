@@ -9,8 +9,14 @@ https://github.com/peerlibrary/meteor-pdf.js
 ## Quick Start
 1. `npm install -g meteorite` (if not already installed)
 2. `mrt add pdfjs`
-3. Exemple: 
+3. Exemple:
+
+```html
+<!-- In your template -->
+<canvas id="pdfcanvas"></canvas>
+```
 ```js
+/* In your Template.xxx.rendered */
 PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
 	// Fetch the first page
 	pdf.getPage(1).then(function getPageHelloWorld(page) {
