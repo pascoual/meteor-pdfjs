@@ -3,8 +3,8 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.add_files(['build/pdf.js',
-                 'build/pdf.worker.js',
-                 'web/compatibility.js'], 'client');
+  api.add_files(['build/pdf.js'], 'client');
+  api.add_files(['build/pdf.worker.js',
+                 'web/compatibility.js'], 'client', {isAsset: true});
   api.export && api.export('PDFJS'); 
 });

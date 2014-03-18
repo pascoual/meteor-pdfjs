@@ -17,6 +17,9 @@ https://github.com/peerlibrary/meteor-pdf.js
 ```
 ```js
 /* In your Template.xxx.rendered */
+// Set worker URL to package assets
+PDFJS.workerSrc = '/packages/pdfjs/build/pdf.worker.js';
+// Create PDF
 PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
 	// Fetch the first page
 	pdf.getPage(1).then(function getPageHelloWorld(page) {
