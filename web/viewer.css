@@ -90,18 +90,22 @@ select {
 
 :-webkit-full-screen .page {
   margin-bottom: 100%;
+  border: 0;
 }
 
 :-moz-full-screen .page {
   margin-bottom: 100%;
+  border: 0;
 }
 
 :-ms-fullscreen .page {
   margin-bottom: 100% !important;
+  border: 0;
 }
 
 :fullscreen .page {
   margin-bottom: 100%;
+  border: 0;
 }
 
 :-webkit-full-screen a:not(.internalLink) {
@@ -230,6 +234,7 @@ html[dir='rtl'] #outerContainer.sidebarOpen > #mainContainer {
   top: 32px;
   bottom: 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   position: absolute;
   width: 200px;
   background-color: hsla(0,0%,0%,.1);
@@ -245,6 +250,7 @@ html[dir='rtl'] #sidebarContent {
 
 #viewerContainer {
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   position: absolute;
   top: 32px;
   right: 0;
@@ -421,6 +427,7 @@ html[dir='rtl'] .secondaryToolbar {
   max-width: 200px;
   max-height: 400px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: -4px;
 }
 
@@ -594,6 +601,9 @@ html[dir='rtl'] .splitToolbarButton > .toolbarButton {
               0 0 1px hsla(0,0%,100%,.15) inset,
               0 0 1px hsla(0,0%,0%,.05);
   z-index: 199;
+}
+.splitToolbarButton > .toolbarButton {
+  position: relative;
 }
 html[dir='ltr'] .splitToolbarButton > .toolbarButton:first-child,
 html[dir='rtl'] .splitToolbarButton > .toolbarButton:last-child {
@@ -941,6 +951,10 @@ html[dir="rtl"] #viewOutline.toolbarButton::before {
   content: url(images/toolbarButton-viewOutline-rtl.png);
 }
 
+#viewAttachments.toolbarButton::before {
+  content: url(images/toolbarButton-viewAttachments.png);
+}
+
 #viewFind.toolbarButton::before {
   content: url(images/toolbarButton-search.png);
 }
@@ -1096,6 +1110,7 @@ html[dir='rtl'] .verticalToolbarSeparator {
   bottom: 0;
   padding: 10px 40px 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .thumbnail {
@@ -1157,13 +1172,15 @@ a:focus > .thumbnail > .thumbnailSelectionRing,
   color: hsla(0,0%,100%,1);
 }
 
-#outlineView {
+#outlineView,
+#attachmentsView {
   position: absolute;
   width: 192px;
   top: 0;
   bottom: 0;
   padding: 4px 4px 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
@@ -1176,7 +1193,8 @@ html[dir='rtl'] .outlineItem > .outlineItems {
   margin-right: 20px;
 }
 
-.outlineItem > a {
+.outlineItem > a,
+.attachmentsItem > a {
   text-decoration: none;
   display: inline-block;
   min-width: 95%;
@@ -1190,15 +1208,18 @@ html[dir='rtl'] .outlineItem > .outlineItems {
   white-space: normal;
 }
 
-html[dir='ltr'] .outlineItem > a {
+html[dir='ltr'] .outlineItem > a,
+html[dir='ltr'] .attachmentsItem > a {
   padding: 2px 0 5px 10px;
 }
 
-html[dir='rtl'] .outlineItem > a {
+html[dir='rtl'] .outlineItem > a,
+html[dir='rtl'] .attachmentsItem > a {
   padding: 2px 10px 5px 0;
 }
 
-.outlineItem > a:hover {
+.outlineItem > a:hover,
+.attachmentsItem > a:hover {
   background-color: hsla(0,0%,100%,.02);
   background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
   background-clip: padding-box;
@@ -1277,7 +1298,6 @@ canvas {
 .textLayer > div {
   color: transparent;
   position: absolute;
-  line-height: 1;
   white-space: pre;
   cursor: text;
 }
@@ -1394,6 +1414,10 @@ canvas {
   height: 100%;
   background-color: hsla(0,0%,0%,.2);
   z-index: 10000;
+}
+#overlayContainer > * {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #promptContainer {
@@ -1542,6 +1566,7 @@ html[dir='rtl'] #documentPropertiesContainer .row > * {
   bottom: 0;
   left: 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   position: absolute;
   right: 0;
   top: 27px;
@@ -1619,12 +1644,13 @@ html[dir='rtl'] #documentPropertiesContainer .row > * {
 @media screen and (min-resolution: 2dppx) {
   /* Rules for Retina screens */
   .toolbarButton::before {
-    transform: scale(0.5);
     -webkit-transform: scale(0.5);
+    transform: scale(0.5);
     top: -5px;
   }
 
   .secondaryToolbarButton::before {
+    -webkit-transform: scale(0.5);
     transform: scale(0.5);
     top: -4px;
   }
@@ -1730,6 +1756,10 @@ html[dir='rtl'] #documentPropertiesContainer .row > * {
   }
   html[dir="rtl"] #viewOutline.toolbarButton::before {
     content: url(images/toolbarButton-viewOutline-rtl@2x.png);
+  }
+
+  #viewAttachments.toolbarButton::before {
+    content: url(images/toolbarButton-viewAttachments@2x.png);
   }
 
   #viewFind.toolbarButton::before {

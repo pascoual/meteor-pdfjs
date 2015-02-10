@@ -58,17 +58,17 @@ if (typeof PDFJS === 'undefined') {
   }
 
   function TypedArray(arg1) {
-    var result;
+    var result, i, n;
     if (typeof arg1 === 'number') {
       result = [];
-      for (var i = 0; i < arg1; ++i) {
+      for (i = 0; i < arg1; ++i) {
         result[i] = 0;
       }
     } else if ('slice' in arg1) {
       result = arg1.slice(0);
     } else {
       result = [];
-      for (var i = 0, n = arg1.length; i < n; ++i) {
+      for (i = 0, n = arg1.length; i < n; ++i) {
         result[i] = arg1[i];
       }
     }
@@ -85,6 +85,7 @@ if (typeof PDFJS === 'undefined') {
   }
 
   window.Uint8Array = TypedArray;
+  window.Int8Array = TypedArray;
 
   // we don't need support for set, byteLength for 32-bit array
   // so we can use the TypedArray as well
@@ -523,4 +524,36 @@ if (typeof PDFJS === 'undefined') {
   if (!window.history.pushState) {
     PDFJS.disableHistory = true;
   }
+})();
+
+(function checkSetPresenceInImageData() {
+  if (window.CanvasPixelArray) {
+    if (typeof window.CanvasPixelArray.prototype.set !== 'function') {
+      window.CanvasPixelArray.prototype.set = function(arr) {
+        for (var i = 0, ii = this.length; i < ii; i++) {
+          this[i] = arr[i];
+        }
+      };
+    }
+  }
+})();
+
+(function checkStorages() {
+  // Feature test as per http://diveintohtml5.info/storage.html
+  // The additional localStorage call is to get around a FF quirk, see
+  // bug #495747 in bugzilla
+  try {
+    if ('localStorage' in window && window['localStorage'] !== null) {
+      return;
+    }
+  } catch (e) { }
+  window.localStorage = {
+    data: Object.create(null),
+    getItem: function (key) {
+      return this.data[key];
+    },
+    setItem: function (key, value) {
+      this.data[key] = value;
+    }
+  };
 })();
