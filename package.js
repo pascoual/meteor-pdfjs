@@ -1,7 +1,7 @@
 Package.describe({
   name: "pascoual:pdfjs",
   summary: "PDF rendering for your Meteor application (client only)",
-  version: "1.0.68",
+  version: "1.1.114",
   git: "https://github.com/pascoual/meteor-pdfjs"
 });
 
