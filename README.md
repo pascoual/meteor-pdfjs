@@ -7,9 +7,8 @@ If you need server side PDF rendering, please use pdf.js Meteor package from Mit
 https://github.com/peerlibrary/meteor-pdf.js
 
 ## Quick Start
-1. `npm install -g meteorite` (if not already installed)
-2. `mrt add pdfjs`
-3. Exemple:
+1. `meteor add pascoual:pdfjs
+2. Exemple:
 
 ```html
 <!-- In your template -->
@@ -18,7 +17,7 @@ https://github.com/peerlibrary/meteor-pdf.js
 ```js
 /* In your Template.xxx.rendered */
 // Set worker URL to package assets
-PDFJS.workerSrc = '/packages/pdfjs/build/pdf.worker.js';
+PDFJS.workerSrc = '/packages/pascoual_pdfjs/build/pdf.worker.js';
 // Create PDF
 PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
 	// Fetch the first page
