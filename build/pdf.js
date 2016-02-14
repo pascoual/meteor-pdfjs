@@ -20,6 +20,11 @@ if (typeof PDFJS === 'undefined') {
   (typeof window !== 'undefined' ? window : this).PDFJS = {};
 }
 
+// @wrk961 making modification based upon @pascoual "hack"
+if(!PDFJS) {
+  PDFJS = {};
+}
+
 PDFJS.version = '1.3.91';
 PDFJS.build = 'd1e83b5';
 
