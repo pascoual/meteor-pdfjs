@@ -1,8 +1,5 @@
 {
   "name": "pdfjs",
-  "description": "PDF rendering for your Meteor application (client only)",
-  "homepage": "https://github.com/pascoual/meteor-pdfjs",
-  "author": "Pascal Richier @pascalrichier",
-  "version": "0.8.1169",
-  "git": "https://github.com/pascoual/meteor-pdfjs.git"
+  "description": "Fork of PDF @pascalrichier's https://github.com/pascoual/meteor-pdfjs.git",
+  "git": "https://github.com/wkronmiller/meteor-pdfjs.git"
 }

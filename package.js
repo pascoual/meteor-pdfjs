@@ -1,8 +1,8 @@
 Package.describe({
-  name: "pascoual:pdfjs",
+  name: "wrk961:pdfjs",
   summary: "PDF rendering for your Meteor application (client only)",
-  version: "1.1.114",
-  git: "https://github.com/pascoual/meteor-pdfjs"
+  version: "1.3.91",
+  git: "https://github.com/wkronmiller/meteor-pdfjs.git"
 });
 
 Package.on_use(function (api) {
