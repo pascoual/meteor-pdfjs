@@ -1,5 +1,5 @@
 {
   "name": "pdfjs",
   "description": "Fork of PDF @pascalrichier's https://github.com/pascoual/meteor-pdfjs.git",
-  "git": "https://github.com/wkronmiller/meteor-pdfjs.git"
+  "git": "https://github.com/jan-san/meteor-pdfjs.git"
 }

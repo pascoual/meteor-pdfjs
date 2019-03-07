@@ -7,8 +7,8 @@ If you need server side PDF rendering, please use pdf.js Meteor package from Mit
 https://github.com/peerlibrary/meteor-pdf.js
 
 ## Quick Start
-1. `meteor add pascoual:pdfjs
-2. Exemple:
+1. Install the Meteor package using [mgp](https://www.npmjs.com/package/mgp)
+2. Example:
 
 ```html
 <!-- In your template -->
@@ -16,14 +16,16 @@ https://github.com/peerlibrary/meteor-pdf.js
 ```
 ```js
 /* In your Template.xxx.rendered */
+import PDFJS from 'meteor/geekho:pdfjs';
+
 // Set worker URL to package assets
-PDFJS.workerSrc = '/packages/pascoual_pdfjs/build/pdf.worker.js';
+PDFJS.GlobalWorkerOptions.workerSrc = '/packages/geekho_pdfjs/build/pdf.worker.js';
 // Create PDF
-PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
+PDFJS.getDocument(url).promise.then(function getPdfHelloWorld(pdf) {
 	// Fetch the first page
 	pdf.getPage(1).then(function getPageHelloWorld(page) {
 		var scale = 1;
-		var viewport = page.getViewport(scale);
+		var viewport = page.getViewport({ scale });
 
 		// Prepare canvas using PDF page dimensions
 		var canvas = document.getElementById('pdfcanvas');
@@ -40,31 +42,9 @@ PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
 ```
 
 ## Documentation
-You can find informations about pdf.js lib:
+You can find information about pdf.js lib:
 * pdf.js web site: http://mozilla.github.io/pdf.js/
 * pdf.js API: https://github.com/mozilla/pdf.js/blob/master/src/display/api.js
-
-## Contributing
-Contributors are very welcome. There are many things you can help with,
-including adding testing feature, creating examples for the examples folder...
-Some guidelines below:
-
-* **Questions**: It's okay to ask a question on Github Issues if you're
-  having trouble since the volume is manageable. Just prefix your Github Issue with
-  'Question: ' so we can differentiate easily. Also, please make sure you've read through
-  pdf.js documentation and tried a few things before asking. This way you can be very
-  specific in your question. Also, please provide a cloneable Github repository
-  if the issue is complex. For more complex questions sometimes it's hard to get all of the context
-  required to solve a problem by just looking at text.
-
-* **New Features** & **Bugs**: You need to ask new features and bugs corrections to PDFjs creator
-  on his GIT: http://mozilla.github.io/pdf.js/
-
-* **Answer Questions!**: If you can help another user please do!
-
-## TODO
-1. Explain how to make a viewer with selectable text
-2. Add testing
 
 ## License
 MIT
